@@ -15,12 +15,12 @@ The following **required** user stories are complete:
 
 The following **stretch** user stories are implemented:
 
-- [ ] User sees an alert when there's a networking error (+1pt)
-- [ ] User can search for a movie (+3pt)
-- [ ] While poster is being fetched, user see's a placeholder image (+1pt)
-- [ ] User sees image transition for images coming from network, not when it is loaded from cache (+1pt)
-- [ ] Customize the selection effect of the cell (+1pt)
-- [ ] For the large poster, load the low resolution image first and then switch to the high resolution image when complete (+2pt)
+- [x] User sees an alert when there's a networking error (+1pt)
+- [x] User can search for a movie (+3pt)
+- [x] While poster is being fetched, user see's a placeholder image (+1pt)
+- [x] User sees image transition for images coming from network, not when it is loaded from cache (+1pt)
+- [x] Customize the selection effect of the cell (+1pt)
+- [x] For the large poster, load the low resolution image first and then switch to the high resolution image when complete (+2pt)
 
 The following **additional** user stories are implemented:
 
@@ -41,11 +41,12 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Notes
 
-Describe any challenges encountered while building the app.
+- Problem: I added a tap gesture recognizer to the table view so that editing is ended for search bar if I tap on the table. However, the tap gesture conflicts with the table cell selection, which is evidenced by failing to select any movie cell when I tapped on the cell (a cell is selected if the background color shows up).
+- Solution: I can avoid this conflict by implementing the gestureRecognizer function from the UIGestrueRecognizerDelegate. In the function, I set that the delegate should recognize and receive the tap only when the search bar is the first responder.
 
 ## License
 
-Copyright [yyyy] [name of copyright owner]
+Copyright [2018 [Xiaohong Zhu]
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
