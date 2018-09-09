@@ -23,7 +23,7 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource, UISearc
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let singleTap: UIGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTap(sender:)))
+        let singleTap: UIGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard(sender:)))
         
         refreshControl = UIRefreshControl()
         refreshControl.tintColor = UIColor.clear
@@ -34,6 +34,7 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource, UISearc
         tableView.dataSource = self
         singleTap.delegate = self
         searchBar.delegate = self
+        searchBar.placeholder = "Search a movie"
         fetchMovies()
     }
     
@@ -46,7 +47,7 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource, UISearc
         return true
     }
     
-    @objc func handleTap(sender: UITapGestureRecognizer) {
+    @objc func hideKeyboard(sender: UITapGestureRecognizer) {
         if sender.state == .ended {
             self.view.endEditing(true)
         }
@@ -78,7 +79,9 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource, UISearc
         }
 
         // Set cell selection style
-        cell.selectionStyle = .gray
+        let backgroundView = UIView()
+        backgroundView.backgroundColor = UIColor(red:0.92, green:0.98, blue:0.98, alpha:1.0)
+        cell.selectedBackgroundView = backgroundView
         
         return cell
     }
@@ -105,7 +108,7 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource, UISearc
     
     func fetchMovies() {
         let url = URL(string: "https://api.themoviedb.org/3/movie/now_playing?api_key=60a41150f71452609ae99855d181c5dc")!
-        let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
+        let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalAndRemoteCacheData, timeoutInterval: 10)
         let session = URLSession(configuration: .default, delegate: nil, delegateQueue: OperationQueue.main)
         let task = session.dataTask(with: request) { (data, response, error) in
             // This will run when the network request returns
@@ -131,11 +134,11 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource, UISearc
                 // Reload your table view data
                 self.tableView.reloadData()
                 
-                // Stop refreshing and hide progress HUD
-                self.refreshControl.endRefreshing()
+                // Hide progress HUD
                 PKHUD.sharedHUD.hide()
             }
         }
+        self.refreshControl.endRefreshing()
         task.resume()
     }
     
