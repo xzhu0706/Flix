@@ -22,7 +22,18 @@ class MovieCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
+        // Set cell selection style
+        let backgroundView = UIView()
+        backgroundView.backgroundColor = UIColor.darkGray
+        selectedBackgroundView = backgroundView
+        
+        if selected {
+            titleLabel.textColor = UIColor.white
+            overviewLabel.textColor = UIColor.white
+        } else {
+            titleLabel.textColor = UIColor.black
+            overviewLabel.textColor = UIColor.black
+        }
     }
 
 }

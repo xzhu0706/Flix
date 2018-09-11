@@ -10,7 +10,7 @@ import UIKit
 import AlamofireImage
 import PKHUD
 
-class NowPlayingViewController: UIViewController, UITableViewDataSource, UISearchBarDelegate, UIGestureRecognizerDelegate {
+class NowPlayingViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, UIGestureRecognizerDelegate {
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
@@ -32,6 +32,7 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource, UISearc
         
         tableView.addGestureRecognizer(singleTap)
         tableView.dataSource = self
+        tableView.delegate = self
         singleTap.delegate = self
         searchBar.delegate = self
         searchBar.placeholder = "Search a movie"
@@ -77,13 +78,20 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource, UISearc
         cell.posterImageView.af_setImage(withURL: smallPosterURL, placeholderImage: placeholderImage, imageTransition: .crossDissolve(0.2), runImageTransitionIfCached: false) { (response) in
             cell.posterImageView.af_setImage(withURL: largePosterURL)
         }
-
-        // Set cell selection style
-        let backgroundView = UIView()
-        backgroundView.backgroundColor = UIColor(red:0.92, green:0.98, blue:0.98, alpha:1.0)
-        cell.selectedBackgroundView = backgroundView
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+        let cell = tableView.cellForRow(at: indexPath) as! MovieCell
+        
+        // deselect the cell if tap on selected cell
+        if cell.isSelected {
+            tableView.deselectRow(at: indexPath, animated: true)
+            return nil
+        } else {
+            return indexPath
+        }
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
