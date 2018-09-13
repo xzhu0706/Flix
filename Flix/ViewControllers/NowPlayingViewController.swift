@@ -94,6 +94,15 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource, UITable
         }
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let cell = sender as! UITableViewCell
+        if let indexPath = tableView.indexPath(for: cell) {
+            let movie = movies[indexPath.row]
+            let detailViewController = segue.destination as! DetailViewController
+            detailViewController.movie = movie
+        }
+    }
+    
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         filteredMovies = searchText.isEmpty ? movies : movies.filter({ (movie: [String : Any]) -> Bool in
             return (movie["title"] as! String).localizedCaseInsensitiveContains(searchText)
