@@ -21,6 +21,7 @@
 		E85D85902150BFAE00C8EBE2 /* SuperheroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85D858F2150BFAE00C8EBE2 /* SuperheroViewController.swift */; };
 		E87DA2C6214A164600E45FA1 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87DA2C5214A164600E45FA1 /* DetailViewController.swift */; };
 		E8A038042140D5900088494B /* MovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A038032140D5900088494B /* MovieCell.swift */; };
+		E8E6AF4A21516F58006BA45A /* TrailerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E6AF4921516F58006BA45A /* TrailerViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,7 @@
 		E85D858F2150BFAE00C8EBE2 /* SuperheroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuperheroViewController.swift; sourceTree = "<group>"; };
 		E87DA2C5214A164600E45FA1 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		E8A038032140D5900088494B /* MovieCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCell.swift; sourceTree = "<group>"; };
+		E8E6AF4921516F58006BA45A /* TrailerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrailerViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,6 +172,7 @@
 				E85704C4213CA28300C0ED84 /* NowPlayingViewController.swift */,
 				E87DA2C5214A164600E45FA1 /* DetailViewController.swift */,
 				E85D858F2150BFAE00C8EBE2 /* SuperheroViewController.swift */,
+				E8E6AF4921516F58006BA45A /* TrailerViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -409,6 +412,7 @@
 			files = (
 				E85704C5213CA28300C0ED84 /* NowPlayingViewController.swift in Sources */,
 				E85D858E2150BF9900C8EBE2 /* PosterCell.swift in Sources */,
+				E8E6AF4A21516F58006BA45A /* TrailerViewController.swift in Sources */,
 				E85D85902150BFAE00C8EBE2 /* SuperheroViewController.swift in Sources */,
 				E8570497213C6A3C00C0ED84 /* AppDelegate.swift in Sources */,
 				E8A038042140D5900088494B /* MovieCell.swift in Sources */,

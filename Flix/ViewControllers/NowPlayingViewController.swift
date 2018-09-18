@@ -20,6 +20,12 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource, UITable
     
     var refreshControl: UIRefreshControl!
     
+    override func viewWillAppear(_ animated: Bool) {
+        if let selectionIndexPath = tableView.indexPathForSelectedRow {
+            tableView.deselectRow(at: selectionIndexPath, animated: true)
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -36,6 +42,7 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource, UITable
         singleTap.delegate = self
         searchBar.delegate = self
         searchBar.placeholder = "Search a movie"
+        
         fetchMovies()
     }
     
@@ -82,6 +89,7 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource, UITable
         return cell
     }
     
+    /* No longer need this function because we added detail view to the table
     func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
         let cell = tableView.cellForRow(at: indexPath) as! MovieCell
         
@@ -93,11 +101,12 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource, UITable
             return indexPath
         }
     }
+    */
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let cell = sender as! UITableViewCell
         if let indexPath = tableView.indexPath(for: cell) {
-            let movie = movies[indexPath.row]
+            let movie = filteredMovies[indexPath.row]
             let detailViewController = segue.destination as! DetailViewController
             detailViewController.movie = movie
         }

@@ -14,6 +14,7 @@ enum MovieKeys {
     static let releaseDate = "release_date"
     static let backdropPath = "backdrop_path"
     static let posterPath = "poster_path"
+    static let id = "id"
 }
 
 class DetailViewController: UIViewController {
@@ -24,7 +25,7 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var releaseDateLabel: UILabel!
     @IBOutlet weak var overviewLabel: UILabel!
     
-    var movie : [String: Any]?
+    var movie : [String: Any]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,7 +45,13 @@ class DetailViewController: UIViewController {
             posterImageView.af_setImage(withURL: posterURL)
         }
     }
-
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let trailerViewController = segue.destination as! TrailerViewController
+        let idQuery = movie[MovieKeys.id] as! Int
+        trailerViewController.idQuery = "\(idQuery)"
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
