@@ -133,7 +133,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UbB-Al-BnW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2280.8000000000002" y="133.5832083958021"/>
+            <point key="canvasLocation" x="2434" y="451"/>
         </scene>
         <!--Now Playing-->
         <scene sceneID="IOe-TW-ELS">
@@ -160,6 +160,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="zRq-bK-y2P" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="n1b-eX-Txs">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
@@ -170,7 +171,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qrF-ko-M3h" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="212" y="134"/>
+            <point key="canvasLocation" x="127" y="450"/>
         </scene>
         <!--Superhero View Controller-->
         <scene sceneID="V9b-vv-Qpj">
@@ -206,6 +207,7 @@
                                         </view>
                                         <connections>
                                             <outlet property="posterImageView" destination="gtd-tj-hfp" id="Y1y-z6-7aS"/>
+                                            <segue destination="RQ8-zh-ELr" kind="show" id="B9t-Gf-tEV"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -221,7 +223,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d2x-jG-0Vn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="912.79999999999995" y="814.54272863568224"/>
+            <point key="canvasLocation" x="1638" y="815"/>
         </scene>
         <!--Superhero-->
         <scene sceneID="F4a-9T-yqn">
@@ -240,11 +242,14 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hzv-b7-vem" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="212" y="815"/>
+            <point key="canvasLocation" x="913" y="815"/>
         </scene>
     </scenes>
     <resources>
         <image name="now_playing_tabbar_item" width="21" height="21"/>
         <image name="superhero_tabbar_item" width="21" height="23"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="B9t-Gf-tEV"/>
+    </inferredMetricsTieBreakers>
 </document>

@@ -20,6 +20,14 @@ class SuperheroViewController: UIViewController, UICollectionViewDataSource {
         
         collectionView.dataSource = self
         
+        let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
+        layout.minimumInteritemSpacing = 5
+        layout.minimumLineSpacing = layout.minimumInteritemSpacing
+        let cellsPerLine : CGFloat = 2
+        let totalInterItemSpacing = (cellsPerLine - 1) * layout.minimumInteritemSpacing
+        let width = (collectionView.frame.size.width - totalInterItemSpacing) / cellsPerLine
+        layout.itemSize = CGSize(width: width, height: width * 3 / 2)
+        
         fetchMovies()
     }
     
@@ -46,8 +54,17 @@ class SuperheroViewController: UIViewController, UICollectionViewDataSource {
         return cell
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let cell = sender as! UICollectionViewCell
+        if let indexPath = collectionView.indexPath(for: cell) {
+            let movie = movies[indexPath.item]
+            let detailViewController = segue.destination as! DetailViewController
+            detailViewController.movie = movie
+        }
+    }
+    
     func fetchMovies() {
-        let url = URL(string: "https://api.themoviedb.org/3/movie/now_playing?api_key=60a41150f71452609ae99855d181c5dc")!
+        let url = URL(string: "https://api.themoviedb.org/3/movie/297762/similar?api_key=60a41150f71452609ae99855d181c5dc")!
         let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalAndRemoteCacheData, timeoutInterval: 10)
         let session = URLSession(configuration: .default, delegate: nil, delegateQueue: OperationQueue.main)
         let task = session.dataTask(with: request) { (data, response, error) in
