@@ -123,6 +123,9 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pTp-lr-yQ9">
                                 <rect key="frame" x="16" y="240" width="119" height="187"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal">
+                                    <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <segue destination="fMB-6J-xp6" kind="presentation" id="GPt-bd-4it"/>
                                 </connections>
@@ -223,7 +226,7 @@
             </objects>
             <point key="canvasLocation" x="127" y="450"/>
         </scene>
-        <!--Superhero View Controller-->
+        <!--Superhero-->
         <scene sceneID="V9b-vv-Qpj">
             <objects>
                 <viewController id="6zD-RS-vrg" customClass="SuperheroViewController" customModule="Flix" customModuleProvider="target" sceneMemberID="viewController">
@@ -266,7 +269,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="Nk2-9h-CyK"/>
                     </view>
-                    <navigationItem key="navigationItem" id="4az-3R-2i3"/>
+                    <navigationItem key="navigationItem" title="Superhero" id="4az-3R-2i3"/>
                     <connections>
                         <outlet property="collectionView" destination="pqX-7G-TCm" id="Kxe-PN-u2h"/>
                     </connections>
@@ -301,6 +304,6 @@
         <image name="superhero_tabbar_item" width="21" height="23"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="OEm-Lf-Ext"/>
+        <segue reference="B9t-Gf-tEV"/>
     </inferredMetricsTieBreakers>
 </document>

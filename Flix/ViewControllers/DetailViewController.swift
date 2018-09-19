@@ -43,6 +43,10 @@ class DetailViewController: UIViewController {
             
             backdropImageView.af_setImage(withURL: backdropURL)
             posterImageView.af_setImage(withURL: posterURL)
+            
+            let layer = posterImageView.layer
+            layer.borderColor = UIColor.white.cgColor
+            layer.borderWidth = 2.0
         }
     }
     
