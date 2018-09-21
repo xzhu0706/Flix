@@ -14,9 +14,15 @@ class SuperheroViewController: UIViewController, UICollectionViewDataSource {
     @IBOutlet weak var collectionView: UICollectionView!
     
     var movies : [[String: Any]] = []
+    var refreshControl: UIRefreshControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        refreshControl = UIRefreshControl()
+        refreshControl.tintColor = UIColor.clear
+        refreshControl.addTarget(self, action: #selector(SuperheroViewController.didPullToRefresh(_:)), for: .valueChanged)
+        collectionView.insertSubview(refreshControl, at: 0)
         
         collectionView.dataSource = self
         
@@ -27,6 +33,14 @@ class SuperheroViewController: UIViewController, UICollectionViewDataSource {
         let totalInterItemSpacing = (cellsPerLine - 1) * layout.minimumInteritemSpacing
         let width = (collectionView.frame.size.width - totalInterItemSpacing) / cellsPerLine
         layout.itemSize = CGSize(width: width, height: width * 3 / 2)
+        
+        fetchMovies()
+    }
+    
+    @objc func didPullToRefresh(_ refreshControl: UIRefreshControl) {
+        // Show progress HUD
+        PKHUD.sharedHUD.contentView = PKHUDProgressView()
+        PKHUD.sharedHUD.show()
         
         fetchMovies()
     }
@@ -94,7 +108,7 @@ class SuperheroViewController: UIViewController, UICollectionViewDataSource {
                 PKHUD.sharedHUD.hide()
             }
         }
-        //self.refreshControl.endRefreshing()
+        self.refreshControl.endRefreshing()
         task.resume()
     }
     

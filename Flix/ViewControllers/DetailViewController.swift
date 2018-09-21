@@ -23,7 +23,6 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var posterImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var releaseDateLabel: UILabel!
-    @IBOutlet weak var overviewLabel: UILabel!
     
     var movie : [String: Any]!
     
@@ -31,9 +30,15 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
 
         if let movie = movie {
+            let overviewTextView = UITextView(frame: CGRect(x: 15, y: 435, width: view.frame.width - 15*2, height: 180))
+            overviewTextView.backgroundColor = UIColor.clear
+            overviewTextView.textColor = UIColor.white
+            overviewTextView.font = UIFont.systemFont(ofSize: 18, weight: UIFont.Weight.thin)
+            overviewTextView.isScrollEnabled = true
+            
             titleLabel.text = movie[MovieKeys.title] as? String
             releaseDateLabel.text = movie[MovieKeys.releaseDate] as? String
-            overviewLabel.text = movie[MovieKeys.overview] as? String
+            overviewTextView.text = movie[MovieKeys.overview] as? String
             
             let baseURLString = "https://image.tmdb.org/t/p/original"
             let backdropPathString = movie[MovieKeys.backdropPath] as! String
@@ -47,6 +52,8 @@ class DetailViewController: UIViewController {
             let layer = posterImageView.layer
             layer.borderColor = UIColor.white.cgColor
             layer.borderWidth = 2.0
+            
+            view.addSubview(overviewTextView)
         }
     }
     
