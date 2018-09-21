@@ -35,6 +35,7 @@ class DetailViewController: UIViewController {
             overviewTextView.textColor = UIColor.white
             overviewTextView.font = UIFont.systemFont(ofSize: 18, weight: UIFont.Weight.thin)
             overviewTextView.isScrollEnabled = true
+            overviewTextView.isEditable = false
             
             titleLabel.text = movie[MovieKeys.title] as? String
             releaseDateLabel.text = movie[MovieKeys.releaseDate] as? String
