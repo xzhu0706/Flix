@@ -36,6 +36,9 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource, UITable
         refreshControl.addTarget(self, action: #selector(NowPlayingViewController.didPullToRefresh(_:)), for: .valueChanged)
         tableView.insertSubview(refreshControl, at: 0)
         
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 50
+        
         tableView.addGestureRecognizer(singleTap)
         tableView.dataSource = self
         tableView.delegate = self
@@ -133,7 +136,7 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     func fetchMovies() {
-        let url = URL(string: "https://api.themoviedb.org/3/movie/top_rated?api_key=60a41150f71452609ae99855d181c5dc")!
+        let url = URL(string: "https://api.themoviedb.org/3/movie/now_playing?api_key=60a41150f71452609ae99855d181c5dc")!
         let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalAndRemoteCacheData, timeoutInterval: 10)
         let session = URLSession(configuration: .default, delegate: nil, delegateQueue: OperationQueue.main)
         let task = session.dataTask(with: request) { (data, response, error) in
