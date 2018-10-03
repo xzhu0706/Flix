@@ -23,6 +23,7 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var posterImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var releaseDateLabel: UILabel!
+    @IBOutlet weak var overviewTextView: UITextView!
     
     var movie : [String: Any]!
     
@@ -30,13 +31,6 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
 
         if let movie = movie {
-            let overviewTextView = UITextView(frame: CGRect(x: 15, y: 435, width: view.frame.width - 15*2, height: 180))
-            overviewTextView.backgroundColor = UIColor.clear
-            overviewTextView.textColor = UIColor.white
-            overviewTextView.font = UIFont.systemFont(ofSize: 18, weight: UIFont.Weight.thin)
-            overviewTextView.isScrollEnabled = true
-            overviewTextView.isEditable = false
-            
             titleLabel.text = movie[MovieKeys.title] as? String
             releaseDateLabel.text = movie[MovieKeys.releaseDate] as? String
             overviewTextView.text = movie[MovieKeys.overview] as? String
@@ -56,6 +50,10 @@ class DetailViewController: UIViewController {
             
             view.addSubview(overviewTextView)
         }
+    }
+    
+    @IBAction func didTapOnPoster(_ sender: Any) {
+        performSegue(withIdentifier: "ShowTrailer", sender: nil)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

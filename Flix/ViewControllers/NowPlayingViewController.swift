@@ -36,6 +36,9 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource, UITable
         refreshControl.addTarget(self, action: #selector(NowPlayingViewController.didPullToRefresh(_:)), for: .valueChanged)
         tableView.insertSubview(refreshControl, at: 0)
         
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 50
+        
         tableView.addGestureRecognizer(singleTap)
         tableView.dataSource = self
         tableView.delegate = self
